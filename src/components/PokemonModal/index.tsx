@@ -1,5 +1,3 @@
-import { Tooltip } from "antd";
-
 import { Pokemon } from "@/@types/pokemon";
 import { PokemonSpecieColor } from "@/@types/theme";
 import { Info } from "@/components/PokemonModal/Info";
@@ -50,11 +48,7 @@ const PokemonModal = ({
     >
       <S.ModalHeader>
         <h2>{pokemon?.name}</h2>
-        {types?.map((type) => (
-          <Tooltip title={type} key={type}>
-            <PokemonTypeImage type={type} />
-          </Tooltip>
-        ))}
+        {types?.map((type) => <PokemonTypeImage type={type} />)}
       </S.ModalHeader>
 
       <Info

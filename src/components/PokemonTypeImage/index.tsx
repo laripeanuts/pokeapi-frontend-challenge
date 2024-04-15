@@ -1,3 +1,4 @@
+import { Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import * as S from "./styles";
@@ -16,16 +17,18 @@ export const PokemonTypeImage = ({
   const navigate = useNavigate();
 
   return (
-    <S.Image
-      key={type}
-      src={`/assets/svgs/species/${type}.svg`}
-      alt={type}
-      width={size}
-      onClick={() => navigate(`/type/${type}`)}
-      onError={({ currentTarget }) => {
-        currentTarget.onerror = null;
-        currentTarget.src = fallback;
-      }}
-    />
+    <Tooltip title={type} key={type}>
+      <S.Image
+        key={type}
+        src={`/assets/svgs/species/${type}.svg`}
+        alt={type}
+        width={size}
+        onClick={() => navigate(`/type/${type}`)}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src = fallback;
+        }}
+      />
+    </Tooltip>
   );
 };
