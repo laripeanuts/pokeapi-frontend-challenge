@@ -7,6 +7,7 @@
   - [🖊️ Commit Messages](#️-commit-messages)
   - [⚙️ Scripts](#️-scripts)
   - [💻 Made with](#-made-with)
+  - [Folder structure](#folder-structure)
   - [🚀 How to run](#-how-to-run)
   - [👀 To be continued](#-to-be-continued)
 
@@ -97,6 +98,48 @@ This app already has some scripts configured:
 [![COMMITLINT](https://img.shields.io/badge/Commitlint-E9A203?style=for-the-badge&logo=commitlint&logoColor=white)](https://commitlint.js.org/#/)
 [![COMMITIZEN](https://img.shields.io/badge/Commitizen-2B7489?style=for-the-badge&logo=commitizen&logoColor=white)](https://commitizen.github.io/cz-cli/)
 [![CONVENTIONAL COMMITS](https://img.shields.io/badge/Conventional_Commits-EC4A3F?style=for-the-badge&logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org/en/v1.0.0/)
+
+## Folder structure
+
+```bash
+📦
+├─ .github
+├─ .husky
+│  ├─ commit-msg
+│  └─ pre-commit
+├─ public
+│  ├─ assets
+│  │  ├─ images
+│  │  └─ svgs
+│   favicon.svg
+├─ src
+│  ├─ @types
+│  ├─ assets
+│  ├─ components
+│  ├─ hooks
+│  ├─ layout
+│  ├─ main.tsx
+│  ├─ pages
+│  ├─ providers
+│  ├─ queries
+│  ├─ services
+│  ├─ store
+│  ├─ styles
+│  ├─ tests
+│  └─ utils
+├─ .gitignore
+├─ README.md
+├─ commitlint.config.js
+├─ index.html
+├─ jsconfig.json
+├─ package-lock.json
+├─ package.json
+├─ prettierrc.json
+├─ .eslintrc.cjs
+├─ tsconfig.json
+├─ tsconfig.node.json
+└─ vite.config.ts
+```
 
 ## 🚀 How to run
 
