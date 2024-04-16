@@ -8,15 +8,15 @@ import * as S from "./styles";
 
 type PokemonModalProps = {
   pokemon: Pokemon;
-  isOpen: boolean;
-  setClosed: () => void;
+  isModalOpened: boolean;
+  setModalClosed: () => void;
   color: PokemonSpecieColor;
 };
 
-const PokemonModal = ({
+export const PokemonModal = ({
   pokemon,
-  isOpen,
-  setClosed,
+  isModalOpened,
+  setModalClosed,
   color,
 }: PokemonModalProps) => {
   const mainImage = pokemon?.sprites.other["official-artwork"].front_default;
@@ -38,19 +38,17 @@ const PokemonModal = ({
         </S.ModalAside>
       }
       centered
-      open={isOpen}
-      onCancel={setClosed}
-      onOk={setClosed}
-      closable
+      key={pokemon?.id}
+      open={isModalOpened}
+      onCancel={setModalClosed}
       width={1000}
-      speciescolor={color}
       footer={null}
+      speciescolor={color}
     >
       <S.ModalHeader>
         <h2>{pokemon?.name}</h2>
-        {types?.map((type) => <PokemonTypeImage type={type} />)}
+        {types?.map((type) => <PokemonTypeImage type={type} key={type} />)}
       </S.ModalHeader>
-
       <Info
         abilities={pokemon.abilities}
         height={pokemon.height}
@@ -61,5 +59,3 @@ const PokemonModal = ({
     </S.Modal>
   );
 };
-
-export default PokemonModal;
