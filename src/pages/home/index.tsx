@@ -1,8 +1,7 @@
-import { CloseCircleFilled, LoadingOutlined } from "@ant-design/icons";
-import { Button, Spin, Tooltip } from "antd";
-import Search from "antd/es/input/Search";
-import { useContext, useEffect, useMemo, useState } from "react";
-import { ThemeContext } from "styled-components";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Input, Spin } from "antd";
+import { SearchProps } from "antd/es/input";
+import { useEffect, useMemo, useState } from "react";
 
 import { Pagination as PaginationProps, Result } from "@/@types/services";
 import { PokemonsList } from "@/components/PokemonsList";
@@ -27,7 +26,7 @@ const filterPokemons = (pokemons: Result[], searchQuery: string) => {
 };
 
 export const HomePage = () => {
-  const theme = useContext(ThemeContext);
+  const { Search } = Input;
 
   const [pagination, setPagination] =
     useState<PaginationProps>(initialPagination);
@@ -52,6 +51,29 @@ export const HomePage = () => {
     setPokemons(() => [...pokemons]);
   }, [filteredPokemons, pagination, searchQuery]);
 
+  const handlePagination = (page: number, pageSize: number) => {
+    setPagination((prev) => ({ ...prev, page, pageSize }));
+  };
+
+  const handleCancelSearch = () => {
+    setSearchQuery("");
+    setPagination((prev) => ({ ...prev, page: 1 }));
+  };
+
+  const handleOnChange = (value: string) => {
+    setSearchQuery(value);
+    setPagination((prev) => ({ ...prev, page: 1 }));
+  };
+
+  const onSearch: SearchProps["onSearch"] = (value, _event, info) => {
+    if (info?.source === "clear") {
+      handleCancelSearch();
+      return;
+    }
+
+    handleOnChange(value);
+  };
+
   if (isLoading) {
     return (
       <Spin
@@ -61,19 +83,6 @@ export const HomePage = () => {
       />
     );
   }
-
-  const handlePagination = (page: number, pageSize: number) => {
-    setPagination((prev) => ({ ...prev, page, pageSize }));
-  };
-
-  const handleCancelSearch = () => {
-    setSearchQuery("");
-  };
-
-  const handleSearch = (value: string) => {
-    setSearchQuery(value);
-    setPagination((prev) => ({ ...prev, page: 1 }));
-  };
 
   return (
     <S.Space direction="vertical" align="center">
@@ -85,17 +94,8 @@ export const HomePage = () => {
           placeholder="Search pokemons by name or number..."
           enterButton="Catch them all!"
           size="large"
-          onSearch={handleSearch}
-          suffix={
-            <Tooltip
-              title="Clear search"
-              color={theme?.pokemon.colors.main.primary}
-            >
-              <Button onClick={handleCancelSearch} type="text">
-                <CloseCircleFilled style={{ color: "gray" }} />
-              </Button>
-            </Tooltip>
-          }
+          onSearch={onSearch}
+          allowClear
         />
       </S.SearchRow>
       <PokemonsList
