@@ -41,4 +41,8 @@ export const SearchRow = styled.div`
   .ant-input-suffix {
     height: 24px;
   }
+
+  .ant-input-group-wrapper {
+    max-width: 50rem;
+  }
 `;

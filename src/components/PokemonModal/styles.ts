@@ -23,7 +23,13 @@ export const Modal = styled(AntModal)<ModalProps>`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: ${({ speciescolor }) => speciescolor.main};
+
+    background: ${({ speciescolor }) => speciescolor.dark};
+    background-image: url("/assets/images/background-card-mask.png");
+    background-size: cover;
+    background-blend-mode: color-burn;
+    background-position: center;
+
     color: ${({ theme }) => theme.pokemon.colors.main.contrast};
   }
 
@@ -45,7 +51,16 @@ export const Modal = styled(AntModal)<ModalProps>`
   }
 
   aside {
-    color: ${({ speciescolor }) => speciescolor.dark};
+    strong {
+      color: ${({ speciescolor }) => speciescolor.dark};
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 1rem;
+      padding: 0 0.5rem;
+    }
+
+    img {
+      z-index: 1;
+    }
   }
 `;
 

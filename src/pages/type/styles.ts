@@ -33,6 +33,7 @@ export const Header = styled.header`
   align-items: center;
   gap: 1rem;
   width: 100%;
+  padding: 0 2rem;
 `;
 
 export const Info = styled.div`
@@ -40,14 +41,20 @@ export const Info = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.25rem;
+
+  h4 {
+    text-transform: uppercase;
+    width: 8rem;
+    text-align: end;
+  }
 `;
 
 export const TextWeak = styled.h4`
-  text-decoration: underline;
   text-decoration-color: red;
 `;
 
 export const TextStrong = styled.h4`
-  text-decoration: underline;
   text-decoration-color: green;
 `;

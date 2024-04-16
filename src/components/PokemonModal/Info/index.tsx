@@ -31,17 +31,20 @@ export const Info = ({ height, weight, abilities, xp }: InfoProps) => {
       unit: "",
     },
   ];
+
   return (
     <S.ModalPokemonInfoContainer>
-      {infos.map((info) => (
-        <S.ModalPokemonInfo key={info.label}>
-          <span>{info.label}</span>
-          <strong>
-            {info.value}
-            {info.unit}
-          </strong>
-        </S.ModalPokemonInfo>
-      ))}
+      {infos.map((info) =>
+        info.value ? (
+          <S.ModalPokemonInfo key={info.label}>
+            <span>{info.label}</span>
+            <strong>
+              {info.value}
+              {info.unit}
+            </strong>
+          </S.ModalPokemonInfo>
+        ) : null,
+      )}
     </S.ModalPokemonInfoContainer>
   );
 };

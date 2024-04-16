@@ -62,7 +62,7 @@ export const TypePage = () => {
           <h1>{type}</h1>
           <h3>{data?.pokemon?.length} pokemons</h3>
         </Space>
-        <Space direction="vertical" size={24}>
+        <Space direction="vertical">
           {strong.length > 0 ? (
             <S.Info>
               {strong?.map((type) => (

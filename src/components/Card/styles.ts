@@ -11,8 +11,15 @@ export const Container = styled(Card)<CardProps>`
   height: 16rem;
   min-width: 12rem;
   overflow: hidden;
+  border-radius: 1rem;
+  border: 2px solid ${({ speciescolor }) => speciescolor.light};
 
   background: ${({ speciescolor }) => speciescolor.dark};
+  background-image: url("/assets/images/background-card-mask.png");
+  background-size: cover;
+  background-blend-mode: color-burn;
+  background-position: center;
+
   box-shadow: ${({ theme }) =>
     theme.type === "light"
       ? "0 4px 8px rgba(0, 0, 0, 0.1)"
@@ -26,7 +33,7 @@ export const Container = styled(Card)<CardProps>`
       theme.type === "light"
         ? "4px 8p 8px rgba(0, 0, 0, 0.4)"
         : "4px 8p 8px rgba(255, 255, 255, 0.4)"};
-    border: 2px solid ${({ speciescolor }) => speciescolor.light};
+    border-color: ${({ speciescolor }) => speciescolor.dark};
   }
 `;
 
@@ -71,4 +78,18 @@ export const CardFooter = styled.div`
   font-weight: 900;
   font-size: 1rem;
   text-align: center;
+`;
+
+export const Image = styled.img`
+  cursor: pointer;
+  transition: transform 0.4s ease-in-out;
+
+  max-width: 9rem;
+  max-height: 7.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.4);
+  }
 `;

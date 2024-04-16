@@ -3,7 +3,6 @@ import { Spin } from "antd";
 import { useState } from "react";
 
 import { Pokemon } from "@/@types/pokemon";
-import { PokemonCardImage } from "@/components/Card/PokemonCardImage";
 import { PokemonModal } from "@/components/PokemonModal";
 import { PokemonTypeImage } from "@/components/PokemonTypeImage";
 import { useGetPokemon } from "@/queries/pokemons";
@@ -55,7 +54,14 @@ export const Card = ({ pokemonId }: CardProps) => {
                 ))}
               </S.CardTypes>
             </S.CardHeader>
-            <PokemonCardImage image={mainImage} name={pokemon?.name} />
+            <S.Image
+              src={mainImage ?? "/assets/svgs/pokemon-shadow.svg"}
+              alt={pokemon?.name}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = "/assets/svgs/pokemon-shadow.svg";
+              }}
+            />
             <S.CardFooter>
               <p>{pokemon?.name}</p>
             </S.CardFooter>
