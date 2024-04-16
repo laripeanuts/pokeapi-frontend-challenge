@@ -104,6 +104,7 @@ This app already has some scripts configured:
 ```bash
 📦
 ├─ .github
+├─ .vscode
 ├─ .husky
 │  ├─ commit-msg
 │  └─ pre-commit
@@ -111,7 +112,6 @@ This app already has some scripts configured:
 │  ├─ assets
 │  │  ├─ images
 │  │  └─ svgs
-│   favicon.svg
 ├─ src
 │  ├─ @types
 │  ├─ assets
@@ -127,18 +127,6 @@ This app already has some scripts configured:
 │  ├─ styles
 │  ├─ tests
 │  └─ utils
-├─ .gitignore
-├─ README.md
-├─ commitlint.config.js
-├─ index.html
-├─ jsconfig.json
-├─ package-lock.json
-├─ package.json
-├─ prettierrc.json
-├─ .eslintrc.cjs
-├─ tsconfig.json
-├─ tsconfig.node.json
-└─ vite.config.ts
 ```
 
 ## 🚀 How to run
