@@ -39,6 +39,11 @@ export const Description = styled(Button)`
   font-size: 0.75rem;
   color: ${({ theme }) => theme.pokemon.colors.main.contrast};
   opacity: 0.8;
+
+  &:hover {
+    color: ${({ theme }) => theme.pokemon.colors.main.contrast} !important;
+    opacity: 0.7;
+  }
 `;
 
 export const Image = styled.img`
