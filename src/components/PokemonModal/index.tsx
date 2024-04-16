@@ -22,6 +22,8 @@ export const PokemonModal = ({
   const mainImage = pokemon?.sprites.other["official-artwork"].front_default;
   const types = pokemon?.types.map((type) => type.type.name);
 
+  if (!pokemon) return null;
+
   return (
     <S.Modal
       title={
