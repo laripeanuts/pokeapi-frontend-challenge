@@ -1,3 +1,4 @@
+import { pokemonTheme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const ModalPokemonInfoContainer = styled.div`
@@ -5,6 +6,10 @@ export const ModalPokemonInfoContainer = styled.div`
   align-items: center;
   gap: 1rem;
   height: 100%;
+
+  @media (max-width: ${pokemonTheme.breakpoints.lg}) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ModalPokemonInfo = styled.div`

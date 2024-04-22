@@ -33,7 +33,7 @@ export const HomePage = () => {
   const [pokemons, setPokemons] = useState<Result[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { data, isLoading } = useGetPokemons();
+  const { data, isLoading, isFirstFetch } = useGetPokemons();
 
   const filteredPokemons = useMemo(
     () => filterPokemons(data?.results || [], searchQuery),
@@ -74,7 +74,7 @@ export const HomePage = () => {
     handleOnChange(value);
   };
 
-  if (isLoading) {
+  if (isLoading || isFirstFetch) {
     return (
       <Spin
         spinning={true}

@@ -4,6 +4,7 @@ import { ItemType, MenuItemType } from "antd/es/menu/hooks/useItems";
 import { useNavigate } from "react-router-dom";
 
 import { PokemonTypeImage } from "@/components/PokemonTypeImage";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useGetPokemonTypes } from "@/queries/pokemons";
 import { getColorBySpecies } from "@/utils/theme";
 
@@ -17,6 +18,7 @@ type NavSideMenuProps = {
 export const NavSideMenu = ({ collapsed, setCollapsed }: NavSideMenuProps) => {
   const navigate = useNavigate();
   const { isLoading, data } = useGetPokemonTypes();
+  const { sm: isMobile } = useMediaQuery();
 
   const typesList =
     data?.results.map((type) => {
@@ -37,12 +39,7 @@ export const NavSideMenu = ({ collapsed, setCollapsed }: NavSideMenuProps) => {
     }) || [];
 
   return (
-    <S.Container
-      trigger={null}
-      collapsible
-      collapsed={collapsed}
-      className="sider"
-    >
+    <S.Aside collapsed={collapsed}>
       <Space direction="horizontal">
         {!collapsed ? <h2>SPECIES</h2> : null}
         <Button
@@ -59,6 +56,10 @@ export const NavSideMenu = ({ collapsed, setCollapsed }: NavSideMenuProps) => {
         defaultSelectedKeys={["1"]}
         onClick={({ key }) => {
           key === "all" ? navigate("/") : navigate(`/type/${key}`);
+
+          if (isMobile) {
+            setCollapsed(true);
+          }
         }}
         items={[
           {
@@ -85,6 +86,6 @@ export const NavSideMenu = ({ collapsed, setCollapsed }: NavSideMenuProps) => {
           ))}
         </S.SkeletonList>
       ) : null}
-    </S.Container>
+    </S.Aside>
   );
 };

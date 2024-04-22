@@ -3,6 +3,7 @@ import { PokemonSpecieColor } from "@/@types/theme";
 import { Info } from "@/components/PokemonModal/Info";
 import { Stats } from "@/components/PokemonModal/Stats";
 import { PokemonTypeImage } from "@/components/PokemonTypeImage";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 import * as S from "./styles";
 
@@ -19,6 +20,7 @@ export const PokemonModal = ({
   setModalClosed,
   color,
 }: PokemonModalProps) => {
+  const { xs, sm, md, lg } = useMediaQuery();
   const mainImage = pokemon?.sprites.other["official-artwork"].front_default;
   const types = pokemon?.types.map((type) => type.type.name);
 
@@ -43,7 +45,7 @@ export const PokemonModal = ({
       key={pokemon?.id}
       open={isModalOpened}
       onCancel={setModalClosed}
-      width={1000}
+      width={lg ? 800 : md ? 600 : sm ? 300 : xs ? 280 : 1000}
       footer={null}
       speciescolor={color}
     >

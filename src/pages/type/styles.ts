@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 import { PokemonSpecieColor } from "@/@types/theme";
+import { pokemonTheme } from "@/styles/theme";
 
 type ContainerProps = {
   color: PokemonSpecieColor;
@@ -9,7 +10,7 @@ type ContainerProps = {
 export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
-
+  height: 100%;
   gap: 2rem;
 
   h1 {
@@ -25,6 +26,19 @@ export const Container = styled.div<ContainerProps>`
     color: ${({ color, theme }) =>
       theme.type === "dark" ? color.light : color.dark};
   }
+
+  @media (max-width: ${pokemonTheme.breakpoints.md}) {
+    gap: 1rem;
+    height: auto;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+  }
 `;
 
 export const Header = styled.header`
@@ -34,6 +48,17 @@ export const Header = styled.header`
   gap: 1rem;
   width: 100%;
   padding: 0 2rem;
+
+  @media (max-width: ${pokemonTheme.breakpoints.md}) {
+    flex-direction: column;
+    gap: 0.25rem !important;
+
+    .ant-space {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem !important;
+    }
+  }
 `;
 
 export const Info = styled.div`

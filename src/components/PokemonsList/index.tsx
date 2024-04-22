@@ -24,22 +24,37 @@ export const PokemonsList = ({
 }: PokemonsListProps) => {
   if ((!pokemons || !pokemons.length) && !isLoading) {
     return (
-      <S.Container>
+      <S.EmptyContainer>
+        <h2>No pokemons found</h2>
         <img
           src="/assets/images/snorlax-sad.png"
           alt="sad snorlax pokemon"
           width={300}
         />
-        <h2>No pokemons found</h2>
-      </S.Container>
+      </S.EmptyContainer>
     );
   }
 
   return (
     <S.Container>
-      <Row gutter={[16, 16]} justify="center">
+      <Row
+        gutter={[16, 16]}
+        justify="center"
+        style={{
+          width: "100%",
+        }}
+      >
         {pokemons.map((pokemon) => (
-          <Col className="gutter-row" key={pokemon.name}>
+          <Col
+            className="gutter-row"
+            key={pokemon.name}
+            xs={24}
+            sm={18}
+            md={10}
+            lg={8}
+            xl={6}
+            xxl={4}
+          >
             <Card
               key={pokemon.name}
               pokemonId={pokemon.url.split("/")[6] as string}
@@ -52,7 +67,7 @@ export const PokemonsList = ({
         total={total}
         onChange={handlePagination}
         pageSize={pageSize}
-        pageSizeOptions={[20, 40, 50, 100]}
+        pageSizeOptions={[10, 20, 40, 50, 100]}
       />
     </S.Container>
   );

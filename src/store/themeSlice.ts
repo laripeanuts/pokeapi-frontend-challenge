@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { Theme } from "@/@types/theme";
-import { darkTheme, lightTheme } from "@/styles/theme";
+import { darkTheme, lightTheme } from "@/styles/themeConfig";
 
 const dark: Theme = { type: "dark", config: darkTheme };
 const light: Theme = { type: "light", config: lightTheme };

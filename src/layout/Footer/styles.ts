@@ -2,6 +2,8 @@ import { Button } from "antd";
 import { Footer as AntFooter } from "antd/es/layout/layout";
 import styled from "styled-components";
 
+import { pokemonTheme } from "@/styles/theme";
+
 export const Container = styled(AntFooter)`
   width: 100%;
   background-color: ${({ theme }) => theme.pokemon.colors.main.tertiary};
@@ -11,6 +13,11 @@ export const Container = styled(AntFooter)`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 6rem;
+
+  @media (max-width: ${pokemonTheme.breakpoints.sm}) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 export const Social = styled.div`

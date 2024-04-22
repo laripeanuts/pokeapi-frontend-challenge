@@ -1,4 +1,5 @@
 import { PokemonSpecieColor } from "@/@types/theme";
+import { pokemonTheme } from "@/styles/theme";
 import { Modal as AntModal, ModalProps as AntModalProps } from "antd";
 import { styled } from "styled-components";
 
@@ -15,6 +16,10 @@ export const Modal = styled(AntModal)<ModalProps>`
   .ant-modal-content {
     display: flex;
     overflow: hidden;
+
+    @media (max-width: ${pokemonTheme.breakpoints.lg}) {
+      flex-direction: column !important;
+    }
   }
 
   .ant-modal-header {

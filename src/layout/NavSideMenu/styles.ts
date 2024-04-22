@@ -1,11 +1,9 @@
 import Sider, { SiderProps as AntSiderProps } from "antd/es/layout/Sider";
 import styled from "styled-components";
 
-interface SiderProps extends AntSiderProps {
-  collapsed: boolean;
-}
+import { pokemonTheme } from "@/styles/theme";
 
-export const Container = styled(Sider)<SiderProps>`
+export const Aside = styled(Sider)<AntSiderProps>`
   border-inline-end: 1px solid rgba(253, 253, 253, 0.12);
 
   .ant-layout-sider-children {
@@ -18,9 +16,6 @@ export const Container = styled(Sider)<SiderProps>`
 
     svg {
       color: ${({ theme }) => theme.pokemon.colors.main.contrast};
-    }
-
-    #collapse-button {
     }
   }
 
@@ -46,6 +41,22 @@ export const Container = styled(Sider)<SiderProps>`
   .ant-menu-item {
     color: ${({ theme }) => theme.pokemon.colors.main.contrast};
     font-weight: 700;
+
+    &:hover {
+      background: ${({ theme }) =>
+        theme.pokemon.colors.main.primary} !important;
+    }
+  }
+
+  .ant-menu-item-selected {
+    background: ${({ theme }) => theme.pokemon.colors.main.primary};
+  }
+
+  @media (max-width: ${pokemonTheme.breakpoints.sm}) {
+    width: ${({ collapsed }) => (collapsed ? null : "100%")} !important;
+    min-width: ${({ collapsed }) => (collapsed ? null : "100%")} !important;
+    max-width: ${({ collapsed }) => (collapsed ? null : "100%")} !important;
+    flex: 0 0 ${({ collapsed }) => (collapsed ? null : "100%")} !important;
   }
 `;
 

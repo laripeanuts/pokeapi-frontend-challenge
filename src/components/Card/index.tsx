@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Pokemon } from "@/@types/pokemon";
 import { PokemonModal } from "@/components/PokemonModal";
 import { PokemonTypeImage } from "@/components/PokemonTypeImage";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useGetPokemon } from "@/queries/pokemons";
 import { getColorBySpecies } from "@/utils/theme";
 
@@ -15,6 +16,7 @@ type CardProps = {
 };
 
 export const Card = ({ pokemonId }: CardProps) => {
+  const { sm: isMobile } = useMediaQuery();
   const { isLoading, data: pokemon } = useGetPokemon(pokemonId);
 
   const [isPokemonDetailModalOpen, setShowPokemonDetailsModal] =
@@ -43,7 +45,8 @@ export const Card = ({ pokemonId }: CardProps) => {
           <S.CardContent>
             <S.CardHeader>
               <span>
-                #<strong>{pokemon?.id}</strong>
+                #
+                <strong>{`${pokemon?.id} ${isMobile ? pokemon?.name : ""}`}</strong>
               </span>
               <S.CardTypes>
                 {pokemon?.types.map((type) => (

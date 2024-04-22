@@ -3,7 +3,7 @@ import React from "react";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
 import { useTheme } from "@/hooks/useTheme";
-import { pokemonTheme } from "@/styles/colors";
+import { pokemonTheme } from "@/styles/theme";
 
 export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
   const {

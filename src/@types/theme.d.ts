@@ -58,4 +58,13 @@ export type PokemonColors = {
 
 export type PokemonTheme = {
   colors: PokemonColors;
+  breakpoints: {
+    xxs: string;
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    xxl: string;
+  };
 };

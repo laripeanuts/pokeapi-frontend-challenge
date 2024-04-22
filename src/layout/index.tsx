@@ -1,7 +1,8 @@
 import { Layout as AntLayout } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useTheme } from "@/hooks/useTheme";
 import { Footer } from "@/layout/Footer";
 import { Header } from "@/layout/Header";
@@ -15,14 +16,19 @@ type LayoutProps = {
 
 export const Layout = ({ children }: LayoutProps) => {
   const { theme, toggleTheme } = useTheme();
-  const [collapsed, setCollapsed] = useState(false);
+  const { sm: isMobile } = useMediaQuery();
+  const [collapsed, setCollapsed] = useState(isMobile);
+
+  useEffect(() => {
+    setCollapsed(isMobile);
+  }, [isMobile]);
 
   return (
     <S.Layout>
       <Header theme={theme} toggleTheme={toggleTheme} />
       <AntLayout>
         <NavSideMenu collapsed={collapsed} setCollapsed={setCollapsed} />
-        <S.Content>{children || <Outlet />}</S.Content>
+        <S.Content collapsed={collapsed}>{children || <Outlet />}</S.Content>
       </AntLayout>
       <Footer />
     </S.Layout>

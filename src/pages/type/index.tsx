@@ -17,7 +17,7 @@ export const TypePage = () => {
 
   const type = urlType || "default";
 
-  const { data, isLoading } = useGetPokemonsByType(type);
+  const { data, isLoading, isFirstFetch } = useGetPokemonsByType(type);
   const [pokemons, setPokemons] = useState<Result[]>([]);
   const [pagination, setPagination] =
     useState<PaginationProps>(initialPagination);
@@ -40,7 +40,7 @@ export const TypePage = () => {
     setPokemons(() => [...pokemons]);
   }, [pokemonsResult, pagination]);
 
-  if (isLoading) {
+  if (isLoading || isFirstFetch) {
     return (
       <Spin
         spinning={true}

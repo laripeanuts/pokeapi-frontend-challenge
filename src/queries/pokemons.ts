@@ -6,6 +6,7 @@ import {
   getPokemonsByType,
   getPokemonTypes,
 } from "@/services/pokemons";
+import { useEffect, useState } from "react";
 
 export const useGetPokemonTypes = () => {
   return useQuery({
@@ -13,16 +14,28 @@ export const useGetPokemonTypes = () => {
     queryFn: async () => {
       return getPokemonTypes();
     },
+    staleTime: 1000 * 60 * 60, // 1 hour
   });
 };
 
 export const useGetPokemons = () => {
-  return useQuery({
+  const [isFirstFetch, setIsFirstFetch] = useState(true);
+
+  const query = useQuery({
     queryKey: ["pokemons"],
     queryFn: async () => {
       return getPokemons();
     },
+    staleTime: 1000 * 60 * 60, // 1 hour
   });
+
+  useEffect(() => {
+    if (query.isSuccess && isFirstFetch) {
+      setIsFirstFetch(false);
+    }
+  }, [query.isSuccess, isFirstFetch]);
+
+  return { ...query, isFirstFetch };
 };
 
 export const useGetPokemon = (id: string) => {
@@ -35,10 +48,21 @@ export const useGetPokemon = (id: string) => {
 };
 
 export const useGetPokemonsByType = (typeName: string) => {
-  return useQuery({
+  const [isFirstFetch, setIsFirstFetch] = useState(true);
+
+  const query = useQuery({
     queryKey: ["pokemon-by-type", typeName],
     queryFn: async () => {
       return getPokemonsByType(typeName);
     },
+    staleTime: 1000 * 60 * 60, // 1 hour
   });
+
+  useEffect(() => {
+    if (query.isSuccess && isFirstFetch) {
+      setIsFirstFetch(false);
+    }
+  }, [query.isSuccess, isFirstFetch]);
+
+  return { ...query, isFirstFetch };
 };
