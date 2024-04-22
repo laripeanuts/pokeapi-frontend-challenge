@@ -40,6 +40,10 @@ export const TypePage = () => {
     setPokemons(() => [...pokemons]);
   }, [pokemonsResult, pagination]);
 
+  useEffect(() => {
+    setPagination((prev) => ({ ...prev, page: 1 }));
+  }, [type]);
+
   if (isLoading || isFirstFetch) {
     return (
       <Spin
