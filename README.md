@@ -19,10 +19,14 @@ Create a web application witch [ReactJS](https://reactjs.org/) that allows users
 
 ## 🥳 App [demo](http://pokeapi-frontend-challenge.vercel.app)
 
+![pokeapi](./.github/printscreen/app-01.png)
+![pokeapi](./.github/printscreen/app-02.png)
+![pokeapi](./.github/printscreen/app-03.png)
 ![pokeapi](./.github/printscreen/app-04.png)
 ![pokeapi](./.github/printscreen/app-05.png)
-![pokeapi](./.github/printscreen/app-03.png)
-![pokeapi](./.github/printscreen/app-01.png)
+![pokeapi](./.github/printscreen/app-06.png)
+![pokeapi](./.github/printscreen/app-07.png)
+![pokeapi](./.github/printscreen/app-08.png)
 
 ## ✅ Features
 
@@ -33,6 +37,7 @@ Create a web application witch [ReactJS](https://reactjs.org/) that allows users
 - [x] Setup Redux for state management and Redux Toolkit for better performance
 - [x] Themed application with `light` and `dark` mode using And Design and Styled Components
 - [x] Services and requests cached using Axios and React Query
+- [x] Fully responsive
 - [x] Documentation
 
 ### App functionalities
@@ -146,5 +151,6 @@ This app already has some scripts configured:
 
 ## 👀 To be continued
 
+- [x] Make it responsive
 - [ ] Develop unit, integration and e2e tests
-- [ ] Make it responsive
+- [ ] Add a favorite page to save the favorite Pokémon (local storage)
